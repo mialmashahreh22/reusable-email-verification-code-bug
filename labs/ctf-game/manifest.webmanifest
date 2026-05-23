@@ -1,0 +1,17 @@
+{
+  "name": "Reusable Email Verification Code Bug CTF",
+  "short_name": "reusable-ema",
+  "description": "CTF lab for Reusable Email Verification Code Bug",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b16",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "assets/ctf-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
