@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f172a">
-  <title>Reusable Email Verification Code Bug CTF Lab</title>
+  <title>Reusable Email Verification Code Bug - Realistic CTF Simulation</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/ctf-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -13,46 +13,59 @@
   <main class="app">
     <section class="hero">
       <div>
-        <p class="eyebrow">Bug Report CTF</p>
+        <p class="eyebrow">Realistic Bug Simulation</p>
         <h1>Reusable Email Verification Code Bug</h1>
-        <p class="lede">Requesting a new email verification code does not invalidate older codes, leaving multiple valid codes active at once.</p>
+        <p class="lede">Request a verification code, resend a new one, then verify using the old code.</p>
       </div>
-      <div class="terminal" aria-label="Mock lab terminal">
+      <div class="terminal">
         <div class="bar"><span></span><span></span><span></span></div>
-        <pre><code id="terminal-code">loading mock scenario...</code></pre>
-        <div class="scan"></div>
+        <pre><code id="event-log">Lab booted. Interact with the mock app to find the bug.</code></pre>
       </div>
     </section>
 
     <section class="hud">
-      <div><span>Score</span><strong id="score">0</strong></div>
-      <div><span>Lives</span><strong id="lives">3</strong></div>
-      <div><span>Mission</span><strong><span id="mission">1</span>/3</strong></div>
       <div><span>Severity</span><strong>Medium</strong></div>
+      <div><span>Mode</span><strong>Mock App</strong></div>
+      <div><span>Status</span><strong id="status">Hunting</strong></div>
+      <div><span>Flag</span><strong id="flag-state">Locked</strong></div>
     </section>
 
     <section class="layout">
       <article class="card">
-        <p id="type" class="pill">Token Lifecycle / Verification Logic</p>
-        <h2 id="question">Question</h2>
-        <pre class="snippet"><code id="snippet"></code></pre>
-        <div id="choices" class="choices"></div>
-        <div class="actions">
-          <button id="hint" class="ghost" type="button">Hint</button>
-          <button id="next" class="primary" type="button" disabled>Next</button>
+        <div class="card-head">
+          <p class="pill">Goal</p>
+          <h2>Prove old verification codes remain valid after resend.</h2>
+          <p class="muted">Everything here is local mock data. No real target is contacted.</p>
         </div>
-        <p id="feedback" class="feedback" aria-live="polite"></p>
+        <div id="lab-root"></div>
       </article>
 
       <aside class="card intel">
         <h2>Analyst Notes</h2>
-        <p><strong>Expected:</strong> When a new verification code is issued, all previous codes for the same purpose should be invalidated.</p>
-        <p><strong>Actual:</strong> Old and new verification codes remain valid simultaneously.</p>
-        <p>Complete the missions to reveal the flag.</p>
+        <p><strong>Expected:</strong> Only the newest code should remain valid.</p>
+        <p><strong>Actual:</strong> The mock verifier accepts all previously issued codes.</p>
+        <p class="muted">When you reproduce the vulnerable behavior, the flag unlocks.</p>
         <div id="flag" class="flag hidden"></div>
       </aside>
     </section>
   </main>
+  <script>
+    window.CTF_SCENARIO = {
+  "slug": "reusable-email-verification-code-bug",
+  "title": "Reusable Email Verification Code Bug",
+  "kind": "reusableCode",
+  "severity": "Medium",
+  "flag": "FLAG{NEW_VERIFICATION_CODES_SHOULD_INVALIDATE_OLD_ONES}",
+  "brief": "Request a verification code, resend a new one, then verify using the old code.",
+  "goal": "Prove old verification codes remain valid after resend.",
+  "expected": "Only the newest code should remain valid.",
+  "actual": "The mock verifier accepts all previously issued codes.",
+  "seed": {
+    "code1": "184920",
+    "code2": "739401"
+  }
+};
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

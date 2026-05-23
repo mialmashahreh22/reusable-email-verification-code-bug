@@ -1,7 +1,7 @@
 {
-  "name": "Reusable Email Verification Code Bug CTF",
+  "name": "Reusable Email Verification Code Bug Simulation",
   "short_name": "reusable-ema",
-  "description": "CTF lab for Reusable Email Verification Code Bug",
+  "description": "Realistic CTF simulation for Reusable Email Verification Code Bug",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#070b16",
